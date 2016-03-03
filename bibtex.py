@@ -156,8 +156,6 @@ class BibTex(object):
         d = self.fdict
         p = d["type"]  # search or batch?
 
-        # FIXME check this actually works
-
         # MR and Zbl
         mrzbl = {'Both': [True, True], 'MR#': [True, False],
                  'Zbl#': [False, True], 'Neither': [False, False]}
@@ -218,16 +216,3 @@ class BibTex(object):
             self.cleanup('tex', 'bst')
         except:
             pass
-
-
-if __name__ == "__main__":
-    d = {'title': 'textit', 'author': 'textbf', 'volume': 'textbf'}
-    b = BibTex(**d)
-    with open("res") as f:
-        print b.run(f.read())
-    del b
-    d['html'] = True
-    b = BibTex(**d)
-    with open("res") as f:
-        print b.run(f.read())
-    del b
